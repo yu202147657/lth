@@ -26,8 +26,8 @@ class Hparams(abc.ABC):
     @classmethod
     def add_args(cls, parser, defaults: 'Hparams' = None, prefix: str = None,
                  name: str = None, description: str = None, create_group: bool = True):
-        if defaults and not isinstance(defaults, cls):
-            raise ValueError(f'defaults must also be type {cls}.')
+        #if defaults and not isinstance(defaults, cls):
+        #    raise ValueError(f'defaults must also be type {cls}.')
 
         if create_group:
             parser = parser.add_argument_group(name or cls._name, description or cls._description)

@@ -13,7 +13,7 @@ from pruning.mask import Mask
 
 
 @dataclasses.dataclass
-class FisherPruningHparams(hparams.PruningHparams):
+class PruningHparams(hparams.PruningHparams):
     pruning_strategy = 'fisher_pruning'
     pruning_fraction: float = 0.2
     pruning_layers_to_ignore: str = None
@@ -24,13 +24,13 @@ class FisherPruningHparams(hparams.PruningHparams):
     _layers_to_ignore = 'A comma-separated list of addititonal tensors that should not be pruned.'
 
 
-class FisherStrategy(base.Strategy):
+class Strategy(base.Strategy):
     @staticmethod
     def get_pruning_hparams() -> type:
-        return FisherPruningHparams
+        return PruningHparams
 
     @staticmethod
-    def prune(pruning_hparams: FisherPruningHparams, trained_model: models.base.Model, current_mask: Mask = None):
+    def prune(pruning_hparams: PruningHparams, trained_model: models.base.Model, current_mask: Mask = None):
         current_mask = Mask.ones_like(trained_model).numpy() if current_mask is None else current_mask.numpy()
 
         # Determine the number of weights that need to be pruned.
