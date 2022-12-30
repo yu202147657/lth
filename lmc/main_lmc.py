@@ -45,7 +45,8 @@ def lmc(model_name, dataset_name, algo, dict1_path, dict2_path, batch_size=4):
         
         state_dict1, model = models.registry.load_model_and_dict(dict1_path, hp.model_hparams)
         state_dict2, model = models.registry.load_model_and_dict(dict2_path, hp.model_hparams)
-    
+
+    #else if algo = Rare Gems/EP
     else:
             parser_args.arch = model_name
             model = get_model(parser_args)
