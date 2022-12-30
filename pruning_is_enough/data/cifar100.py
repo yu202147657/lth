@@ -4,7 +4,7 @@ import torchvision
 from torchvision import transforms
 import random
 from torch.utils.data.sampler import SubsetRandomSampler
-from args_helper import parser_args
+from pruning_is_enough.args_helper import parser_args
 from torch.utils.data import random_split
 
 

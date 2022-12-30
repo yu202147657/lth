@@ -6,7 +6,7 @@ import numpy as np
 
 import math
 
-from args_helper import parser_args
+from pruning_is_enough.args_helper import parser_args
 
 
 class GetSubnet(autograd.Function):

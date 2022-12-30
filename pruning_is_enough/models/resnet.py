@@ -1,8 +1,8 @@
 import torch.nn as nn
 
-from args_helper import parser_args
-from utils.builder import get_builder
-from utils.net_utils import prune
+from pruning_is_enough.args_helper import parser_args
+from pruning_is_enough.utils.builder import get_builder
+from pruning_is_enough.utils.net_utils import prune
 
 # BasicBlock {{{
 class BasicBlock(nn.Module):

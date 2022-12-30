@@ -4,9 +4,9 @@ import tqdm
 import copy
 import pdb
 
-from utils.eval_utils import accuracy
-from utils.logging import AverageMeter, ProgressMeter
-from utils.net_utils import get_regularization_loss, prune, get_layers
+from pruning_is_enough.utils.eval_utils import accuracy
+from pruning_is_enough.utils.logging import AverageMeter, ProgressMeter
+from pruning_is_enough.utils.net_utils import get_regularization_loss, prune, get_layers
 
 from torch import optim
 

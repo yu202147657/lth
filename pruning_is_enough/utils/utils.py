@@ -12,7 +12,7 @@ import matplotlib as plt
 from matplotlib import colors as mcolors
 from pylab import *
 import random
-from utils.net_utils import get_layers
+from pruning_is_enough.utils.net_utils import get_layers
 plt.style.use('seaborn-whitegrid')
 
 

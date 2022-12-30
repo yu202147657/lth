@@ -1,4 +1,4 @@
-from main_utils import *
+from pruning_is_enough.main_utils import *
 
 
 def main():

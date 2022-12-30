@@ -8,7 +8,7 @@ import copy
 import types
 import math
 
-from utils.net_utils import get_layers
+from pruning_is_enough.utils.net_utils import get_layers
 
 # def count_total_parameters(net):
 #     total = 0

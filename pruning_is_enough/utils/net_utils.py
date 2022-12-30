@@ -1,4 +1,4 @@
-from args_helper import parser_args
+from pruning_is_enough.args_helper import parser_args
 from functools import partial
 import os
 import pdb
@@ -11,9 +11,9 @@ import numpy as np
 import torch
 import torch.nn as nn
 
-from utils.mask_layers import MaskLinear, MaskConv
-from utils.conv_type import GetSubnet as GetSubnetConv
-from utils.conv_type import SubnetConv
+from pruning_is_enough.utils.mask_layers import MaskLinear, MaskConv
+from pruning_is_enough.utils.conv_type import GetSubnet as GetSubnetConv
+from pruning_is_enough.utils.conv_type import SubnetConv
 
 
 # return layer objects of conv layers and linear layers so we can parse them

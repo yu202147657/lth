@@ -2,7 +2,7 @@ import argparse
 import sys
 import yaml
 
-from configs import parser as _parser
+from pruning_is_enough.configs import parser as _parser
 
 global parser_args
 
@@ -954,7 +954,7 @@ class ArgsHelper:
         override_args = _parser.argv_to_vars(sys.argv)
 
         # load yaml file
-        yaml_txt = open(parser_args.config).read()
+        yaml_txt = open('pruning_is_enough/configs/hypercube/resnet20/'+str(parser_args.config)).read()
 
         # override args
         loaded_yaml = yaml.load(yaml_txt, Loader=yaml.FullLoader)

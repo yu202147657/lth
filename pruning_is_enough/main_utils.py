@@ -3,7 +3,7 @@
 ### put every long functions in main.py into here
 """
 
-from args_helper import parser_args
+from pruning_is_enough.args_helper import parser_args
 import pdb
 import numpy as np
 import os
@@ -24,9 +24,9 @@ import torch.multiprocessing as mp
 import sys
 import re
 
-from utils.conv_type import FixedSubnetConv, SampleSubnetConv
-from utils.logging import AverageMeter, ProgressMeter
-from utils.net_utils import (
+from pruning_is_enough.utils.conv_type import FixedSubnetConv, SampleSubnetConv
+from pruning_is_enough.utils.logging import AverageMeter, ProgressMeter
+from pruning_is_enough.utils.net_utils import (
     set_model_prune_rate,
     freeze_model_weights,
     save_checkpoint,
@@ -39,14 +39,14 @@ from utils.net_utils import (
     get_layers,
     get_prune_rate,
 )
-from utils.schedulers import get_scheduler
-from utils.utils import set_seed, plot_histogram_scores
-from SmartRatio import SmartRatio
+from pruning_is_enough.utils.schedulers import get_scheduler
+from pruning_is_enough.utils.utils import set_seed, plot_histogram_scores
+from pruning_is_enough.SmartRatio import SmartRatio
 
 import importlib
 
-import data
-import models
+import pruning_is_enough.data
+import pruning_is_enough.models
 
 import copy
 from torch._utils import _flatten_dense_tensors, _unflatten_dense_tensors

@@ -77,6 +77,18 @@ def load(save_location: str, save_step: Step, model_hparams: ModelHparams, outpu
     model.load_state_dict(state_dict)
     return model
 
+### Added function ###
+def load_model_and_dict(path, model_hparams: ModelHparams, outputs=None):
+
+    state_dict = torch.load(path)
+
+    #state_dict = state_dict['model_state_dict']
+
+    model = get(model_hparams, outputs)
+    #model.load_state_dict(state_dict)
+    
+    return state_dict, model
+##########################
 
 def exists(save_location, save_step):
     return get_platform().exists(paths.model(save_location, save_step))

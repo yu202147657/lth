@@ -2,9 +2,9 @@ import time
 import torch
 import tqdm
 
-from utils.eval_utils import accuracy
-from utils.logging import AverageMeter, ProgressMeter
-from utils.net_utils import SubnetL1RegLoss
+from pruning_is_enough.utils.eval_utils import accuracy
+from pruning_is_enough.utils.logging import AverageMeter, ProgressMeter
+from pruning_is_enough.utils.net_utils import SubnetL1RegLoss
 
 
 __all__ = ["train", "validate", "modifier"]

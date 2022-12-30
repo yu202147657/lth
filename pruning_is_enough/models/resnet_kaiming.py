@@ -6,9 +6,9 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.nn.init as init
 
-from utils.builder import get_builder
-from args_helper import parser_args
-from utils.net_utils import prune
+from pruning_is_enough.utils.builder import get_builder
+from pruning_is_enough.args_helper import parser_args
+from pruning_is_enough.utils.net_utils import prune
 
 # def _weights_init(m):
 #     classname = m.__class__.__name__

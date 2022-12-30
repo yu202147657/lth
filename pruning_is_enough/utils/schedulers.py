@@ -1,4 +1,4 @@
-from args_helper import parser_args
+from pruning_is_enough.args_helper import parser_args
 import numpy as np
 import torch
 

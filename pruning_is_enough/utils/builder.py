@@ -1,12 +1,12 @@
-from args_helper import parser_args
+from pruning_is_enough.args_helper import parser_args
 import math
 
 import torch
 import torch.nn as nn
 
-import utils.conv_type
-import utils.bn_type
-from utils.linear_type import SubnetLinear
+import pruning_is_enough.utils.conv_type
+import pruning_is_enough.utils.bn_type
+from pruning_is_enough.utils.linear_type import SubnetLinear
 
 class Builder(object):
     def __init__(self, conv_layer, bn_layer, first_layer=None):

@@ -9,8 +9,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from utils.builder import get_builder
-from args_helper import parser_args
+from pruning_is_enough.utils.builder import get_builder
+from pruning_is_enough.args_helper import parser_args
 
 
 class Block(nn.Module):

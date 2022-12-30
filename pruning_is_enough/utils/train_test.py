@@ -6,10 +6,10 @@ import random
 import torch
 import torch.nn as nn
 
-from utils.net_utils import get_sparsity, zero_one_loss
-from utils.logging import log_batch
+from pruning_is_enough.utils.net_utils import get_sparsity, zero_one_loss
+from pruning_is_enough.utils.logging import log_batch
 
-from utils.mask_layers import MaskLinear, MaskConv
+from pruning_is_enough.utils.mask_layers import MaskLinear, MaskConv
 
 # amp in pytorch
 from torch.cuda.amp import autocast
