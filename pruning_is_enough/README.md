@@ -9,7 +9,7 @@ python pruning_is_enough/main.py
 The above code will train to default settings. To change the settings, the below are useful parameters:
 
 ```
-python pruning_is_enough/main.py --config "resnet20_global_ep.yml" --algo "global_ep" --arch "resnet20"
+python pruning_is_enough/main.py --config "<PATH TO CONFIG FILE>/resnet20_global_ep.yml" --algo "global_ep" --arch "resnet20"
 ```
 
 Model hyperparameters are stored in the Config folder. 
