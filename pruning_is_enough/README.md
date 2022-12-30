@@ -19,3 +19,4 @@ Algorithims can be one of ```ep|pt_hack|pt_reg|hc|ep+greedy|greedy+ep|hc_iter|gl
 ## Notes from YN:
 - I am not quite sure which is the correct EP ```algo``` to use
 - There seem to be some issues with changing ```arch```. E.g. their code breaks if ```arch``` is set to ```resnet18```, even though this is a supported architecture in the config files.
+- Path issues in their code with the non-default config files. (Currently path is hardcoded to the default - needs to be fixed)
