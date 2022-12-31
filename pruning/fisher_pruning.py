@@ -48,6 +48,7 @@ class Strategy(base.Strategy):
                    for k, v in trained_model.state_dict().items()
                    if k in prunable_tensors}
 
+        print(trained_model.weight.grad)
         # Create a vector of all the unpruned weights in the model.
         weight_vector = np.concatenate([v[current_mask[k] == 1] for k, v in weights.items()])
         threshold = np.sort(np.abs(weight_vector))[number_of_weights_to_prune]
