@@ -1,3 +1,4 @@
+#Adapted from https://github.com/rahimentezari/PermutationInvariance/blob/main/barrier.py
 import numpy as np
 import torch
 
