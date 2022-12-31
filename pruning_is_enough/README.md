@@ -16,6 +16,8 @@ Model hyperparameters are stored in the Config folder.
 
 Algorithims can be one of ```ep|pt_hack|pt_reg|hc|ep+greedy|greedy+ep|hc_iter|global_ep|global_ep_iter|imp```
 
+GPU is required for training.
+
 ## Notes from YN:
 - I am not quite sure which is the correct EP ```algo``` to use
 - There seem to be some issues with changing ```arch```. E.g. their code breaks if ```arch``` is set to ```resnet18```, even though this is a supported architecture in the config files.
