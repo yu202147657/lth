@@ -1,0 +1,15 @@
+Dataset Hyperparameters
+    * dataset_name => cifar10
+    * batch_size => 128
+Model Hyperparameters
+    * model_name => cifar_resnet_20
+    * model_init => kaiming_normal
+    * batchnorm_init => uniform
+Training Hyperparameters
+    * optimizer_name => sgd
+    * lr => 0.1
+    * training_steps => 160ep
+    * momentum => 0.9
+    * milestone_steps => 80ep,120ep
+    * gamma => 0.1
+    * weight_decay => 0.0001
