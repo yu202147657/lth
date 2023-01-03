@@ -1,19 +1,25 @@
 #Adapted from https://github.com/rahimentezari/PermutationInvariance/blob/main/barrier.py
 import numpy as np
 import torch
+import csv
 
 #Calculate error barrier
-def get_barrier(model, sd1, sd2, trainloader, testloader):
+def get_barrier(model, sd1, sd2, trainloader, testloader, filename):
+    
     dict_barrier = {}
-    ####################### get the barrier - before permutation
-    ###### LMC
+
     weights = np.linspace(0, 1, 11)
     result_test = []
     result_train = []
-    for i in range(len(weights)):
-        model.load_state_dict(interpolate_state_dicts(sd1, sd2, weights[i]))
-        result_train.append(evaluate_model(model, trainloader)['top1'])
-        result_test.append(evaluate_model(model, testloader)['top1'])
+
+    with open(filename, 'w') as f:
+        writer = csv.writer(f, delimiter='\t')
+        
+        for i in range(len(weights)):
+            model.load_state_dict(interpolate_state_dicts(sd1, sd2, weights[i]))
+            result_train.append(evaluate_model(model, trainloader)['top1'])
+            result_test.append(evaluate_model(model, testloader)['top1'])
+            writer.writerow([weights[i], result_train[i]])
 
     model1_eval = result_test[0]
     model2_eval = result_test[-1]
@@ -27,10 +33,11 @@ def get_barrier(model, sd1, sd2, trainloader, testloader):
     add_element(dict_barrier, 'test_avg_models', test_avg_models)
     add_element(dict_barrier, 'train_lmc', result_train)
     add_element(dict_barrier, 'test_lmc', result_test)
-    add_element(dict_barrier, 'barrier_test', test_avg_models - result_test[5])
-    add_element(dict_barrier, 'barrier_train', train_avg_models - result_train[5])
+    add_element(dict_barrier, 'barrier_test', test_avg_models - result_test[5]) #mid alpha - 0.5
+    add_element(dict_barrier, 'barrier_train', train_avg_models - result_train[5]) #mid alpha - 0.5
 
     return dict_barrier
+
 
 
 def interpolate_state_dicts(state_dict_1, state_dict_2, weight):
@@ -52,8 +59,8 @@ def evaluate_model(model, dataloader):
         
         for i, (input, target) in enumerate(dataloader):
             input = input.type(torch.FloatTensor)
-            #input = data.to(device)
-            #target = target.to(device)
+            input = input.to(device)
+            target = target.to(device)
             # compute output
             output = model(input)
 
@@ -106,6 +113,22 @@ def calc_accuracy(output, target, topk=(1,)):
         return res
 
 
+def calc_accuracy(output, target, topk=(1,)):
+    """Computes the accuracy over the k top predictions for the specified values of k"""
+    with torch.no_grad():
+        maxk = max(topk)
+        batch_size = target.size(0)
+
+        _, pred = output.topk(maxk, 1, True, True)
+        pred = pred.t()
+        correct = pred.eq(target.view(1, -1).expand_as(pred))
+
+        res = []
+        for k in topk:
+            correct_k = correct[:k].view(-1).float().sum(0, keepdim=True)
+            res.append(correct_k.mul_(100.0 / batch_size))
+        return res
+    
 
 def add_element(dict, key, value):
     if key not in dict:

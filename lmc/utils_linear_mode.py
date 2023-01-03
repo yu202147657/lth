@@ -49,27 +49,18 @@ def evaluation(dataloader, model, batch_number=None):
     model.eval()
     correct = 0
     number = 0
-    losses = 0
 
-    for i, (image, target) in enumerate(dataloader):
-        image = image.type(torch.FloatTensor)
-        #image = image.cuda()
-        #target = target.cuda()
+    for i, (input, target) in enumerate(dataloader):
+        input = input.type(torch.FloatTensor)
+        input = input.cuda()
+        target = target.cuda()
 
         with torch.no_grad():
             output = model(image)
-            loss = F.cross_entropy(output, target, reduction='sum')
-            losses += loss.item()
             predict = torch.argmax(output, 1)
             correct += (predict == target).float().sum().item()
             number += target.nelement() 
 
-        if batch_number:
-            if (i+1) >= batch_number:
-                print('Early stop with {} iterations'.format(i))
-                break 
-
     acc = correct / number
-    losses = losses / number 
 
-    return acc, losses
+    return acc
