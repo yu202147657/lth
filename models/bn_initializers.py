@@ -8,24 +8,28 @@ import torch
 
 def uniform(w):
     if isinstance(w, torch.nn.BatchNorm2d):
+        torch.manual_seed(42)
         w.weight.data = torch.rand(w.weight.data.shape)
         w.bias.data = torch.zeros_like(w.bias.data)
 
 
 def fixed(w):
     if isinstance(w, torch.nn.BatchNorm2d):
+        torch.manual_seed(42)
         w.weight.data = torch.ones_like(w.weight.data)
         w.bias.data = torch.zeros_like(w.bias.data)
 
 
 def oneone(w):
     if isinstance(w, torch.nn.BatchNorm2d):
+        torch.manual_seed(42)
         w.weight.data = torch.ones_like(w.weight.data)
         w.bias.data = torch.ones_like(w.bias.data)
 
 
 def positivenegative(w):
     if isinstance(w, torch.nn.BatchNorm2d):
+        torch.manual_seed(42)
         uniform(w)
         w.weight.data = w.weight.data * 2 - 1
         w.bias.data = torch.zeros_like(w.bias.data)
