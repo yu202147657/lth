@@ -45,10 +45,12 @@ def interpolate_state_dicts(state_dict_1, state_dict_2, weight):
 
 
 def get_error(model, dataloader):
-    if torch.cuda.is_available():
-        device = torch.device('cuda')
-    else:
-        device = torch.device('cpu')
+    #if torch.cuda.is_available():
+    #    device = torch.device('cuda')
+    #else:
+    #    device = torch.device('cpu')
+    device = torch.device('cpu')
+    model.to(device)
 
     # switch to evaluate mode
     model.eval()
@@ -58,9 +60,10 @@ def get_error(model, dataloader):
     with torch.no_grad():
         i = 0
         for input, label in dataloader:
-            preds = np.argmax(model(input.to(device)), axis=1)
+            preds = np.argmax(model(input.cpu()), axis=1)
             num_correct += (preds == label).sum()
             num_samples += preds.size(0)
             i += 1
+
 
     return float(100 * (1 - num_correct / num_samples))

@@ -17,10 +17,10 @@ fine_tune_lr: 0.1
 fine_tune_lr_policy: cosine_lr
 
 # ===== Network training config ===== #
-epochs: 150 #150 #150
-weight_decay: 0.0005
+epochs: 160 #150 #150
+weight_decay: 0.0001
 momentum: 0.9
-batch_size: 256
+batch_size: 128
 
 # ===== Sparsity =========== #
 conv_type: SubnetConv

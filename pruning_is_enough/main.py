@@ -170,7 +170,7 @@ def main_worker(gpu, ngpus_per_node):
         train_time.update((time.time() - start_train) / 60)
         
         #save every 5 epoch
-        if epoch %5 == 0:
+        if epoch %40 == 0:
             save_checkpoint(model, parser_args,epoch)
 
         

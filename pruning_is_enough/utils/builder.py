@@ -153,11 +153,11 @@ def get_builder():
     print("==> Conv Type: {}".format(parser_args.conv_type))
     print("==> BN Type: {}".format(parser_args.bn_type))
 
-    conv_layer = getattr(utils.conv_type, parser_args.conv_type)
-    bn_layer = getattr(utils.bn_type, parser_args.bn_type)
+    conv_layer = getattr(pruning_is_enough.utils.conv_type, parser_args.conv_type)
+    bn_layer = getattr(pruning_is_enough.utils.bn_type, parser_args.bn_type)
 
     if parser_args.first_layer_type is not None:
-        first_layer = getattr(utils.conv_type, parser_args.first_layer_type)
+        first_layer = getattr(pruning_is_enough.utils.conv_type, parser_args.first_layer_type)
         print(f"==> First Layer Type: {parser_args.first_layer_type}")
     else:
         first_layer = None

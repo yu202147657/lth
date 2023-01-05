@@ -974,7 +974,7 @@ def pretrained(path, model):
 
 def get_dataset(parser_args):
     print(f"=> Getting {parser_args.dataset} dataset")
-    dataset = getattr(data, parser_args.dataset)(parser_args)
+    dataset = getattr(pruning_is_enough.data, parser_args.dataset)(parser_args)
 
     return dataset
 
@@ -987,9 +987,9 @@ def get_model(parser_args):
     if parser_args.fixed_init:
         set_seed(parser_args.seed_fixed_init)
     if parser_args.arch in ['Conv4', 'Conv4Normal']:
-        model = models.__dict__[parser_args.arch](width=parser_args.width)
+        model = pruning_is_enough.models.__dict__[parser_args.arch](width=parser_args.width)
     else:
-        model = models.__dict__[parser_args.arch]()
+        model = pruning_is_enough.models.__dict__[parser_args.arch]()
     if parser_args.fixed_init:
         set_seed(parser_args.seed)
 

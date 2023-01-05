@@ -29,7 +29,7 @@ class ArgsHelper:
         )
         parser.add_argument(
             "--config",
-            default='resnet20_quantized_iter_hc_target_sparsity_1_4_highreg.yml',
+            default='pruning_is_enough/configs/hypercube/resnet20/resnet20_quantized_iter_hc_target_sparsity_1_4_highreg.yml',
             help="Config file to use"
         )
         parser.add_argument(
@@ -954,7 +954,7 @@ class ArgsHelper:
         override_args = _parser.argv_to_vars(sys.argv)
 
         # load yaml file
-        yaml_txt = open('pruning_is_enough/configs/hypercube/resnet20/'+str(parser_args.config)).read()
+        yaml_txt = open(str(parser_args.config)).read()
 
         # override args
         loaded_yaml = yaml.load(yaml_txt, Loader=yaml.FullLoader)
