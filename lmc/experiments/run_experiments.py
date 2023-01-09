@@ -4,8 +4,8 @@ from lmc.main_lmc import lmc
 # python3 open_lth.py train --default_hparams <mnist_lenet_300_100, cifar_resnet_20> 
 #MNIST LENET
 barrier_train = lmc('mnist_lenet_300_100', 'mnist', 'IMP',
-                    'open_lth_data/train_574e51abc295d8da78175b320504f2ba/replicate_3/main/model_ep40_it0.pth',
-                    'open_lth_data/train_574e51abc295d8da78175b320504f2ba/replicate_4/main/model_ep40_it0.pth')
+                    'open_lth_data/train_574e51abc295d8da78175b320504f2ba/replicate_1/main/model_ep40_it0.pth',
+                    'open_lth_data/train_574e51abc295d8da78175b320504f2ba/replicate_2/main/model_ep40_it0.pth')
 
 #CIFAR RESNET
 barrier_train = lmc('cifar_resnet_20', 'cifar10', 'IMP',
@@ -13,6 +13,7 @@ barrier_train = lmc('cifar_resnet_20', 'cifar10', 'IMP',
                     'open_lth_data/train_71bc92a970b64a76d7ab7681764b0021/replicate_2/main/model_ep160_it0.pth')
 
 #CIFAR RESNET- Rewind
+#python open_lth.py lottery --default_hparams cifar_resnet_20 --rewind=500it --levels=3
 barrier_train = lmc('cifar_resnet_20', 'cifar10', 'IMP',
                     'open_lth_data/lottery_23b644efaef60c49ca88fc5e37e2595a/replicate_1/level_3/main/model_ep160_it0.pth',
                     'open_lth_data/lottery_23b644efaef60c49ca88fc5e37e2595a/replicate_2/level_3/main/model_ep160_it0.pth')
