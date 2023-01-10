@@ -14,6 +14,7 @@ barrier_train = lmc('cifar_resnet_20', 'cifar10', 'IMP',
 
 #CIFAR RESNET- Rewind
 #python open_lth.py lottery --default_hparams cifar_resnet_20 --rewind=500it --levels=3
+#python open_lth.py lottery --default_hparams cifar_resnet_20 --rewind=500it --levels=8 --training_steps=630000it --milestone_steps=32000it,48000it
 barrier_train = lmc('cifar_resnet_20', 'cifar10', 'IMP',
                     'open_lth_data/lottery_23b644efaef60c49ca88fc5e37e2595a/replicate_1/level_3/main/model_ep160_it0.pth',
                     'open_lth_data/lottery_23b644efaef60c49ca88fc5e37e2595a/replicate_2/level_3/main/model_ep160_it0.pth')
