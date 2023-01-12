@@ -14,18 +14,44 @@ barrier_train = lmc('cifar_resnet_20', 'cifar10', 'IMP',
 
 #CIFAR RESNET- Rewind
 #python open_lth.py lottery --default_hparams cifar_resnet_20 --rewind=500it --levels=3
+
+IMP_barrier = []
+k = []
+
+#python open_lth.py lottery --default_hparams cifar_resnet_20 --rewind=0it --levels=8 --training_steps=630000it --milestone_steps=32000it,48000it
+barrier_train = lmc('cifar_resnet_20', 'cifar10', 'IMP',
+                    'open_lth_data/lottery_93bc65d66dfa64ffaf2a0ab105433a2c/replicate_1/level_8/main/model_ep160_it0.pth',
+                    'open_lth_data/lottery_93bc65d66dfa64ffaf2a0ab105433a2c/replicate_2/level_8/main/model_ep160_it0.pth')
+IMP_barrier.append(barrier_train)
+k.append(0)
+
 #python open_lth.py lottery --default_hparams cifar_resnet_20 --rewind=500it --levels=8 --training_steps=630000it --milestone_steps=32000it,48000it
 barrier_train = lmc('cifar_resnet_20', 'cifar10', 'IMP',
                     'open_lth_data/lottery_23b644efaef60c49ca88fc5e37e2595a/replicate_1/level_8/main/model_ep160_it0.pth',
                     'open_lth_data/lottery_23b644efaef60c49ca88fc5e37e2595a/replicate_2/level_8/main/model_ep160_it0.pth')
+IMP_barrier.append(barrier_train)
+k.append(500)
 
+#python open_lth.py lottery --default_hparams cifar_resnet_20 --rewind=1000it --levels=8 --training_steps=630000it --milestone_steps=32000it,48000it
+barrier_train = lmc('cifar_resnet_20', 'cifar10', 'IMP',
+                    'open_lth_data/lottery_231c88c353aecc912eada550c58eff10/replicate_1/level_8/main/model_ep160_it0.pth',
+                    'open_lth_data/lottery_231c88c353aecc912eada550c58eff10/replicate_2/level_8/main/model_ep160_it0.pth')
+
+IMP_barrier.append(barrier_train)
+k.append(1000)
+
+import csv
+
+with open('IMP_rewind.csv', 'w') as f:
+    writer = csv.writer(f)
+    writer.writerows(zip(k, IMP_barrier))
 ###################### Rare Gems  ##########################
-#python pruning_is_enough/main.py --fixed-init
+#python pruning_is_enough/main.py --seed-fixed-init 42
 
 #CIFAR RESNET
 barrier_train = lmc('resnet20', 'cifar10', 'GM',
-                        'model_checkpoints/ckpts_pruning_CIFAR10_resnet20_hc_iter_0_1286398818033211_5_reg_L2_5e-05_sgd_cosine_lr_0_1_0_1_50_finetune_0_01_MAML_-1_10_fan_False_signed_constant_unif_width_1_0_seed_42_idx_None_replicate_1/model_ep155_it0.pt',
-                        'model_checkpoints/ckpts_pruning_CIFAR10_resnet20_hc_iter_0_1286398818033211_5_reg_L2_5e-05_sgd_cosine_lr_0_1_0_1_50_finetune_0_01_MAML_-1_10_fan_False_signed_constant_unif_width_1_0_seed_42_idx_None_replicate_2/model_ep155_it0.pt')
+                        'model_checkpoints/ckpts_pruning_CIFAR10_resnet20_hc_iter_0_1286398818033211_5_reg_L2_5e-05_sgd_cosine_lr_0_1_0_1_50_finetune_0_01_MAML_-1_10_fan_False_signed_constant_unif_width_1_0_seed_42_idx_None_Replicate_1/model_ep120_it0.pt',
+                        'model_checkpoints/ckpts_pruning_CIFAR10_resnet20_hc_iter_0_1286398818033211_5_reg_L2_5e-05_sgd_cosine_lr_0_1_0_1_50_finetune_0_01_MAML_-1_10_fan_False_signed_constant_unif_width_1_0_seed_42_idx_None_Replicate_2/model_ep120_it0.pt')
     
     
 ###################### EP  ################################
@@ -34,5 +60,4 @@ barrier_train = lmc('resnet20', 'cifar10', 'GM',
 #could only train for 120 epochs ea/
 
 #CIFAR RESNET
-barrier_train = lmc('resnet20', 'cifar10', 'EP', 'model_checkpoints/ckpts_pruning_CIFAR10_resnet20_ep_0_005_5_reg_None__sgd_cosine_lr_0_1_0_1_50_finetune_0_1_MAML_-1_10_fan_True_signed_constant_unif_width_1_0_seed_42_idx_None_replicate_1/model_ep120_it0.pt',
-                    'model_checkpoints/ckpts_pruning_CIFAR10_resnet20_ep_0_005_5_reg_None__sgd_cosine_lr_0_1_0_1_50_finetune_0_1_MAML_-1_10_fan_True_signed_constant_unif_width_1_0_seed_42_idx_None_replicate_2/model_ep120_it0.pt')
+barrier_train = lmc('resnet20', 'cifar10', 'EP', 'model_checkpoints/ckpts_pruning_CIFAR10_resnet20_ep_0_005_5_reg_None__sgd_cosine_lr_0_1_0_1_50_finetune_0_1_MAML_-1_10_fan_True_signed_constant_unif_width_1_0_seed_42_idx_None_Replicate_1/model_ep120_it0.pt','model_checkpoints/ckpts_pruning_CIFAR10_resnet20_ep_0_005_5_reg_None__sgd_cosine_lr_0_1_0_1_50_finetune_0_1_MAML_-1_10_fan_True_signed_constant_unif_width_1_0_seed_42_idx_None_Replicate_2/model_ep120_it0.pt')

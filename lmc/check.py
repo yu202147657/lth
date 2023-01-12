@@ -13,5 +13,5 @@ if __name__ == "__main__":
             print(sd1[ele] == sd2[ele])
         return
 
-    check_dict('model_checkpoints/ckpts_pruning_CIFAR10_resnet20_ep_0_005_5_reg_None__sgd_cosine_lr_0_1_0_1_50_finetune_0_1_MAML_-1_10_fan_True_signed_constant_unif_width_1_0_seed_42_idx_None_replicate_1/model_ep120_it0.pt',
-                    'model_checkpoints/ckpts_pruning_CIFAR10_resnet20_ep_0_005_5_reg_None__sgd_cosine_lr_0_1_0_1_50_finetune_0_1_MAML_-1_10_fan_True_signed_constant_unif_width_1_0_seed_42_idx_None_replicate_2/model_ep120_it0.pt')
+    check_dict('model_checkpoints/ckpts_pruning_CIFAR10_resnet20_hc_iter_0_1286398818033211_5_reg_L2_5e-05_sgd_cosine_lr_0_1_0_1_50_finetune_0_01_MAML_-1_10_fan_False_signed_constant_unif_width_1_0_seed_42_idx_None_1/model_ep0_it0.pt',
+                    'model_checkpoints/ckpts_pruning_CIFAR10_resnet20_hc_iter_0_1286398818033211_5_reg_L2_5e-05_sgd_cosine_lr_0_1_0_1_50_finetune_0_01_MAML_-1_10_fan_False_signed_constant_unif_width_1_0_seed_42_idx_None/model_ep0_it0.pt')

@@ -1,0 +1,2 @@
+epoch,test_acc_before_rounding,test_acc,val_acc,train_acc,regularization_loss,model_sparsity
+0,27.84,27.84,27.84,23.22222222222222,3.900064706802368,46.455563174527455
